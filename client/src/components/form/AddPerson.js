@@ -27,13 +27,14 @@ const AddPerson = () => {
       },
       update: (cache, { data: { addPerson } }) => {
         const data = cache.readQuery({ query: GET_PEOPLE });
-        cache.writeQuery({
-          query: GET_PEOPLE,
-          data: {
-            ...data,
-            people: [...data.people, addPerson],
-          },
-        });
+        if (data) {
+          cache.writeQuery({
+            query: GET_PEOPLE,
+            data: {
+              people: [...data.people, addPerson],
+            },
+          });
+        }
       },
     });
   };
