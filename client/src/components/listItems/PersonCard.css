@@ -1,0 +1,16 @@
+.ant-card-actions{
+  border: none;
+}
+
+.ant-card-head{
+  grid-column: 1/2;
+  grid-row: 2/3;
+  margin: 0;
+  border: none;
+}
+
+.ant-card-extra{
+  margin: 0;
+  padding: 0;
+
+}
