@@ -91,4 +91,4 @@ const cars_data = [
   },
 ];
 
-export default { people_data, cars_data };
+export { people_data, cars_data };
