@@ -1,0 +1,20 @@
+.header{
+    background-color:#BEA8E1 ;
+    color: #FFE135;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 300px;
+}
+
+h1{
+    font-size: 4rem;
+    margin-left: 30px;
+    text-shadow: #5603AD 1px 0 10px;
+}
