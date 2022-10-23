@@ -71,6 +71,17 @@ const AddCar = () => {
         }}
         onFinish={onFinish}
       >
+        <h2
+          style={{
+            gridColumn: "1 / 3",
+            gridRow: "1 / 2",
+            textAlign: "center",
+            color: "#5603AD",
+            marginBottom: "40px",
+          }}
+        >
+          Add Car
+        </h2>
         <Form.Item
           name="year"
           rules={[{ required: true, message: "Please input the year!" }]}

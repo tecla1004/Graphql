@@ -56,6 +56,17 @@ const AddPerson = () => {
         gridTemplateColumns: "1fr 1fr",
       }}
     >
+      <h2
+        style={{
+          gridColumn: "1 / 3",
+          gridRow: "1 / 2",
+          textAlign: "center",
+          color: "#5603AD",
+          marginBottom: "40px",
+        }}
+      >
+        Add Person
+      </h2>
       <Form.Item
         name="firstName"
         rules={[{ required: true, message: "Please input your first name!" }]}
@@ -106,7 +117,7 @@ const AddPerson = () => {
           width: "100px",
           height: "100px",
           gridColumn: "2 / 3",
-          gridRow: "1 / 3",
+          gridRow: "2 / 4",
           justifySelf: "center",
           alignSelf: "center",
         }}
