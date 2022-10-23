@@ -2,6 +2,7 @@ import { useMutation } from "@apollo/client";
 import { Button, Form, Input } from "antd";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import img from "../../assets/39530.jpg";
 import { ADD_PERSON, GET_PEOPLE } from "../../queries";
 
 const AddPerson = () => {
@@ -50,9 +51,8 @@ const AddPerson = () => {
         border: "3px solid #5603AD",
         borderRadius: "5px",
         padding: "40px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
       }}
     >
       <Form.Item
@@ -60,14 +60,15 @@ const AddPerson = () => {
         rules={[{ required: true, message: "Please input your first name!" }]}
         style={{
           display: "inline-block",
+          marginBottom: "10px",
         }}
       >
         <Input
           placeholder="First Name"
           style={{
             display: "inline-block",
-            width: "80%",
-            height: "20px",
+            width: "200px",
+            height: "40px",
             borderRadius: "5px",
             border: "1px solid #5603AD",
             padding: "5px",
@@ -79,24 +80,43 @@ const AddPerson = () => {
         rules={[{ required: true, message: "Please input your last name!" }]}
         style={{
           display: "inline-block",
+          marginTop: "10px",
+          gridColumn: "1 / 2",
         }}
       >
         <Input
           placeholder="Last Name"
           style={{
             display: "inline-block",
-            width: "80%",
-            height: "20px",
+            width: "200px",
+            height: "40px",
             borderRadius: "5px",
             border: "1px solid #5603AD",
             padding: "5px",
+            margin: "0",
           }}
         />
       </Form.Item>
+      {/* Designed by grmarc / Freepik */}
+      <img
+        src={img}
+        alt="person"
+        style={{
+          width: "100px",
+          height: "100px",
+          gridColumn: "2 / 3",
+          gridRow: "1 / 3",
+          justifySelf: "center",
+          alignSelf: "center",
+        }}
+      />
       <Form.Item
         shouldUpdate={true}
         style={{
           display: "inline-block",
+          gridColumn: "1 / 3",
+          textAlign: "center",
+          marginTop: "20px",
         }}
       >
         {() => (
@@ -116,6 +136,9 @@ const AddPerson = () => {
               color: "white",
               alignItems: "center",
               justifyContent: "center",
+              width: "120px",
+              height: "40px",
+              margin: "20px 0 0 0",
             }}
           >
             {""}
