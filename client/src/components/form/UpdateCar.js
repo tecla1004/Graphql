@@ -29,7 +29,7 @@ const UpdateCar = (props) => {
         personId,
       },
     });
-    // props.onButtonClick();
+    props.onButtonClick();
   };
 
   const title = `Update ${make} ${model} ${year}`;
