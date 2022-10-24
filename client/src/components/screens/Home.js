@@ -10,7 +10,7 @@ const Home = () => {
   const { data } = useQuery(GET_PEOPLE);
   return (
     <div className="App">
-      <Header />
+      <Header header="People & Cars" />
       <div className="Page">
         <AddPerson />
         {data && data.people.length > 0 && <AddCar />}

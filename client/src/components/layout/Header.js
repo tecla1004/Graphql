@@ -1,12 +1,13 @@
 import car from "../../assets/car.svg";
 import "./Header.css";
 
-const Header = () => {
+const Header = (props) => {
+  const { header } = props;
   return (
     <div className="header">
       {/* Image by storyset on Freepik */}
       <img src={car} alt="car" />
-      <h1>People & Cars</h1>
+      <h1>{header}</h1>
     </div>
   );
 };
