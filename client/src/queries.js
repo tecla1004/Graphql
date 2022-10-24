@@ -121,3 +121,16 @@ export const PERSON_CARS = gql`
     }
   }
 `;
+
+export const DELETE_CAR = gql`
+  mutation DeleteCar($id: String!) {
+    deleteCar(id: $id) {
+      id
+      year
+      make
+      model
+      price
+      personId
+    }
+  }
+`;
