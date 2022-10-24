@@ -1,11 +1,15 @@
-import { useMutation } from "@apollo/client";
-import { Button, Form, Input } from "antd";
+import { useMutation, useQuery } from "@apollo/client";
+import { Button, Form, Input, Select } from "antd";
 import { useEffect, useState } from "react";
-import { UPDATE_CAR } from "../../queries";
+import { GET_PEOPLE, PERSON_CARS, UPDATE_CAR } from "../../queries";
+
+const { Option } = Select;
 
 const UpdateCar = (props) => {
   const { id, year, make, model, price, personId } = props;
   const [updateCar] = useMutation(UPDATE_CAR);
+  const { data } = useQuery(GET_PEOPLE);
+  const [initPersonId, setNewPersonId] = useState(personId);
 
   const [form] = Form.useForm();
   const [, forceUpdate] = useState();
@@ -19,16 +23,36 @@ const UpdateCar = (props) => {
     year = parseInt(year);
     price = parseFloat(price);
 
-    updateCar({
-      variables: {
-        id,
-        year,
-        make,
-        model,
-        price,
-        personId,
-      },
-    });
+    if (personId === initPersonId) {
+      updateCar({
+        variables: {
+          id,
+          year,
+          make,
+          model,
+          price,
+          personId,
+        },
+      });
+    } else {
+      console.log("cambio dueño");
+      updateCar({
+        variables: {
+          id,
+          year,
+          make,
+          model,
+          price,
+          personId,
+        },
+        awaitRefetchQueries: true,
+        refetchQueries: [
+          { query: PERSON_CARS, variables: { personId: initPersonId } },
+          { query: PERSON_CARS, variables: { personId: personId } },
+        ],
+      });
+    }
+
     props.onButtonClick();
   };
 
@@ -77,7 +101,13 @@ const UpdateCar = (props) => {
           name="personId"
           rules={[{ required: true, message: "Please input the person ID!" }]}
         >
-          <Input placeholder="Person ID" />
+          <Select placeholder="Person ID">
+            {data.people.map((person) => (
+              <Select.Option key={person.id} value={person.id}>
+                {person.firstName} {person.lastName}
+              </Select.Option>
+            ))}
+          </Select>
         </Form.Item>
         <div
           style={{
