@@ -57,7 +57,7 @@ const DeletePerson = ({ id }) => {
     <DeleteOutlined
       key="delete"
       onClick={handleDelete}
-      style={{ color: "red" }}
+      style={{ color: "red", fontSize: "30px" }}
     />
   );
 };

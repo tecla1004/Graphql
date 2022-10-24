@@ -42,9 +42,18 @@ const CarCard = (props) => {
         <Card
           type="inner"
           title={title}
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+          }}
           actions={[
-            <EditOutlined key="edit" onClick={handleButtonClick} />,
+            <EditOutlined
+              style={{
+                fontSize: "20px",
+                color: "#BEA8E1",
+              }}
+              key="edit"
+              onClick={handleButtonClick}
+            />,
             <DeleteCar id={props.id} personId={props.personId} />,
           ]}
         >

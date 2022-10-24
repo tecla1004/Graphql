@@ -50,7 +50,11 @@ const PersonCard = (props) => {
             padding: "10px",
           }}
           actions={[
-            <EditOutlined key="edit" onClick={handleButtonClick} />,
+            <EditOutlined
+              style={{ color: "#5603AD", fontSize: "30px" }}
+              key="edit"
+              onClick={handleButtonClick}
+            />,
             <DeletePerson id={props.id} />,
           ]}
           extra={

@@ -2,9 +2,10 @@ import { useQuery } from "@apollo/client";
 import { GET_PEOPLE } from "../../queries";
 import AddCar from "../form/AddCar";
 import AddPerson from "../form/AddPerson";
+import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 import PeopleList from "../lists/PeopleList";
-import "./Home.css";
+import "./Page.css";
 
 const Home = () => {
   const { data } = useQuery(GET_PEOPLE);
@@ -16,6 +17,7 @@ const Home = () => {
         {data && data.people.length > 0 && <AddCar />}
         {data && data.people.length > 0 && <PeopleList />}
       </div>
+      <Footer />
     </div>
   );
 };

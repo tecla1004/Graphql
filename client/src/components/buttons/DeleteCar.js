@@ -22,7 +22,10 @@ const DeleteCar = ({ id, personId }) => {
     <DeleteOutlined
       key="delete"
       onClick={handleDelete}
-      style={{ color: "red" }}
+      style={{
+        color: "gray",
+        fontSize: "20px",
+      }}
     />
   );
 };

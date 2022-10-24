@@ -7,7 +7,13 @@ const Header = (props) => {
     <div className="header">
       {/* Image by storyset on Freepik */}
       <img src={car} alt="car" />
-      <h1>{header}</h1>
+      <h1
+        style={{
+          color: "#FFE135",
+        }}
+      >
+        {header}
+      </h1>
     </div>
   );
 };
