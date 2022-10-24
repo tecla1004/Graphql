@@ -115,6 +115,7 @@ const resolvers = {
     },
     updateCar(root, args) {
       const car = find(cars_data, { id: args.id });
+      // console.log(car);
 
       if (!car) {
         throw new Error("Couldn't find car with id " + args.id);
