@@ -4,7 +4,7 @@ import { Button, Form, Input, Select } from "antd";
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import car from "../../assets/car2.svg";
-import { ADD_CAR, GET_CARS, GET_PEOPLE } from "../../queries";
+import { ADD_CAR, GET_CARS, GET_PEOPLE, PERSON_CARS } from "../../queries";
 import "./AddCar.css";
 
 const { Option } = Select;
@@ -42,6 +42,10 @@ const AddCar = () => {
           });
         }
       },
+      awaitRefetchQueries: true,
+      refetchQueries: [
+        { query: PERSON_CARS, variables: { personId: personId } },
+      ],
     });
 
     setId(uuidv4());

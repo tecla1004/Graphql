@@ -1,10 +1,11 @@
 .ant-card-actions{
   border: none;
+  grid-row: 2/3;
 }
 
 .ant-card-head{
   grid-column: 1/2;
-  grid-row: 2/3;
+  grid-row: 3/4;
   margin: 0;
   border: none;
 }
@@ -14,3 +15,4 @@
   padding: 0;
 
 }
+

@@ -48,6 +48,7 @@ const typeDefs = gql`
       personId: String!
     ): Cars
     deleteCar(id: String!): Cars
+    deleteCars(personId: String!): [Cars]
   }
 `;
 
@@ -138,6 +139,19 @@ const resolvers = {
       });
 
       return deletedCar;
+    },
+    deleteCars(root, args) {
+      const deletedCars = filter(cars_data, { personId: args.personId });
+
+      if (!deletedCars) {
+        throw new Error("Couldn't find cars with personId " + args.personId);
+      }
+
+      remove(cars_data, (car) => {
+        return car.personId === args.personId;
+      });
+
+      return deletedCars;
     },
   },
 };

@@ -49,59 +49,65 @@ const UpdatePerson = (props) => {
         >
           <Input placeholder="Last Name" />
         </Form.Item>
-        <Form.Item
-          shouldUpdate={true}
+        <div
           style={{
-            border: "2px solid #5603AD",
-            backgroundColor: "#5603AD",
+            display: "flex",
+            flexDirection: "row",
           }}
         >
-          {() => (
-            <Button
-              type="primary"
-              htmlType="submit"
-              style={{
-                display: "inline-block",
-                borderRadius: "5px",
-                border: "1px solid #5603AD",
-                padding: "10px",
-                backgroundColor: "#5603AD",
-                color: "white",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "120px",
-                height: "40px",
-                margin: "20px 0 0 0",
-              }}
-              disabled={
-                (form.isFieldTouched("firstName") &&
-                  form.isFieldTouched("lastName")) ||
-                form.getFieldsError().filter(({ errors }) => errors.length)
-                  .length
-              }
-            >
-              Update Person
-            </Button>
-          )}
-        </Form.Item>
-        <Button
-          type="danger"
-          style={{
-            display: "inline-block",
-            borderRadius: "5px",
-            border: "1px solid ",
-            padding: "10px",
-            color: "white",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "120px",
-            height: "40px",
-            margin: "20px 0 0 0",
-          }}
-          onClick={props.onButtonClick}
-        >
-          Cancel
-        </Button>
+          <Form.Item
+            shouldUpdate={true}
+            style={{
+              width: "130px",
+            }}
+          >
+            {() => (
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{
+                  display: "inline-block",
+                  borderRadius: "5px",
+                  border: "1px solid #5603AD",
+                  padding: "10px",
+                  backgroundColor: "#5603AD",
+                  color: "white",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "120px",
+                  height: "40px",
+                  margin: "20px 0 0 0",
+                }}
+                disabled={
+                  (form.isFieldTouched("firstName") &&
+                    form.isFieldTouched("lastName")) ||
+                  form.getFieldsError().filter(({ errors }) => errors.length)
+                    .length
+                }
+              >
+                Update Person
+              </Button>
+            )}
+          </Form.Item>
+          <Button
+            type="danger"
+            style={{
+              display: "inline-block",
+              borderRadius: "5px",
+              border: "1px solid ",
+              padding: "10px",
+              color: "white",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "120px",
+              height: "40px",
+              margin: "20px 0 0 0",
+            }}
+            onClick={props.onButtonClick}
+          >
+            Cancel
+          </Button>
+        </div>
       </Form>
     </>
   );

@@ -56,6 +56,19 @@ export const DELETE_PERSON = gql`
   }
 `;
 
+export const DELETE_CARS_BY_PERSON = gql`
+  mutation DeleteCars($personId: String!) {
+    deleteCars(personId: $personId) {
+      id
+      make
+      model
+      year
+      price
+      personId
+    }
+  }
+`;
+
 export const ADD_CAR = gql`
   mutation Mutation(
     $id: String!
@@ -86,6 +99,19 @@ export const ADD_CAR = gql`
 export const GET_CARS = gql`
   {
     cars {
+      id
+      year
+      make
+      model
+      price
+      personId
+    }
+  }
+`;
+
+export const PERSON_CARS = gql`
+  query PersonCars($personId: String!) {
+    personCars(personId: $personId) {
       id
       year
       make

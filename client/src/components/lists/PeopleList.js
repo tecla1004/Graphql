@@ -4,7 +4,10 @@ import { GET_PEOPLE } from "../../queries";
 import PersonCard from "../listItems/PersonCard";
 
 const PeopleList = () => {
-  const { loading, error, data } = useQuery(GET_PEOPLE);
+  const { loading, error, data } = useQuery(GET_PEOPLE, {
+    notifyOnNetworkStatusChange: true,
+    fetchPolicy: "network-only",
+  });
 
   if (loading) return <p>Loading..</p>;
   if (error) return <p>Error</p>;
