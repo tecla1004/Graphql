@@ -2,8 +2,7 @@ import { useMutation } from "@apollo/client";
 import { Button, Form, Input } from "antd";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import img from "../../assets/39530.jpg";
-import { ADD_PERSON, GET_PEOPLE } from "../../queries";
+import { ADD_PERSON, GET_PERSON } from "../../queries";
 
 const AddPerson = () => {
   const [id] = useState(uuidv4());
@@ -26,10 +25,10 @@ const AddPerson = () => {
         lastName,
       },
       update: (cache, { data: { addPerson } }) => {
-        const data = cache.readQuery({ query: GET_PEOPLE });
+        const data = cache.readQuery({ query: GET_PERSON });
         if (data) {
           cache.writeQuery({
-            query: GET_PEOPLE,
+            query: GET_PERSON,
             data: {
               people: [...data.people, addPerson],
             },
@@ -41,96 +40,24 @@ const AddPerson = () => {
 
   return (
     <Form
-      form={form}
-      onFinish={onFinish}
-      name="addPerson-form"
-      layout="inline"
-      size="large"
-      style={{
-        marginBottom: "40px",
-        marginTop: "40px",
-        border: "3px solid #5603AD",
-        borderRadius: "5px",
-        padding: "40px",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-      }}
+    form={form}
+    name="add-person-form"
+    layout="inline"
+    style={{
+      borderBottom: "1px solid #e8e8e8",
+      paddingBottom: "40px",
+    }}
+    size="large"
+    onFinish={onFinish}
     >
-      <h2
-        style={{
-          gridColumn: "1 / 3",
-          gridRow: "1 / 2",
-          textAlign: "center",
-          color: "#5603AD",
-          marginBottom: "40px",
-        }}
-      >
-        Add Person
-      </h2>
-      <Form.Item
-        name="firstName"
-        rules={[{ required: true, message: "Please input your first name!" }]}
-        style={{
-          display: "inline-block",
-          marginBottom: "10px",
-        }}
-      >
-        <Input
-          placeholder="First Name"
-          style={{
-            display: "inline-block",
-            width: "200px",
-            height: "40px",
-            borderRadius: "5px",
-            border: "1px solid #5603AD",
-            padding: "5px",
-          }}
-        />
+      <Form.Item label="First Name:" name="firstName" >
+        <Input placeholder="First Name"/>
+      </Form.Item>
+      <Form.Item label="Last Name:" name="lastName">
+        <Input placeholder="Last Name"/>
       </Form.Item>
       <Form.Item
-        name="lastName"
-        rules={[{ required: true, message: "Please input your last name!" }]}
-        style={{
-          display: "inline-block",
-          marginTop: "10px",
-          gridColumn: "1 / 2",
-        }}
-      >
-        <Input
-          placeholder="Last Name"
-          style={{
-            display: "inline-block",
-            width: "200px",
-            height: "40px",
-            borderRadius: "5px",
-            border: "1px solid #5603AD",
-            padding: "5px",
-            margin: "0",
-          }}
-        />
-      </Form.Item>
-      {/* Designed by grmarc / Freepik */}
-      <img
-        src={img}
-        alt="person"
-        style={{
-          width: "100px",
-          height: "100px",
-          gridColumn: "2 / 3",
-          gridRow: "2 / 4",
-          justifySelf: "center",
-          alignSelf: "center",
-        }}
-      />
-      <Form.Item
-        shouldUpdate={true}
-        style={{
-          display: "inline-block",
-          gridColumn: "1 / 3",
-          textAlign: "center",
-          marginTop: "20px",
-        }}
-      >
+        shouldUpdate={true}>
         {() => (
           <Button
             type="primary"
@@ -138,21 +65,7 @@ const AddPerson = () => {
             disabled={
               !form.isFieldsTouched(true) ||
               form.getFieldError().filter(({ errors }) => errors.length).length
-            }
-            style={{
-              display: "inline-block",
-              borderRadius: "5px",
-              border: "1px solid #5603AD",
-              padding: "10px",
-              backgroundColor: "#5603AD",
-              color: "white",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "120px",
-              height: "40px",
-              margin: "20px 0 0 0",
-            }}
-          >
+            }  >
             {""}
             Add Person
           </Button>

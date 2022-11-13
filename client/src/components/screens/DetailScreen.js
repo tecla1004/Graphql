@@ -3,12 +3,10 @@ import { useQuery } from "@apollo/client";
 import { Avatar, Button, Card } from "antd";
 import { Link, useParams } from "react-router-dom";
 import { PEOPLE_WITH_CARS } from "../../queries";
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
-import CarCard from "../listItems/CarCard";
+import Car from "../listItems/Car";
 import "./Page.css";
 
-const Details = () => {
+const DetailScreen = () => {
   const { id } = useParams();
   const { data, loading, error } = useQuery(PEOPLE_WITH_CARS, {
     variables: { id: id },
@@ -21,7 +19,6 @@ const Details = () => {
 
   return (
     <div className="App">
-      <Header header="Details" />
 
       <div className="profile">
         <Card
@@ -76,8 +73,8 @@ const Details = () => {
           gridRow: "2 / 3",
         }}
       >
-        {data.personCars.map((car) => (
-          <CarCard
+        {data.carsByPersonId.map((car) => (
+          <Car
             key={car.id}
             id={car.id}
             make={car.make}
@@ -109,9 +106,8 @@ const Details = () => {
           Go Back Home
         </Button>
       </Link>
-      <Footer />
     </div>
   );
 };
 
-export default Details;
+export default DetailScreen;

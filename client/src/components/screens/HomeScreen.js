@@ -1,25 +1,23 @@
 import { useQuery } from "@apollo/client";
-import { GET_PEOPLE } from "../../queries";
+import { GET_PERSON } from "../../queries";
 import AddCar from "../form/AddCar";
 import AddPerson from "../form/AddPerson";
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
 import PeopleList from "../lists/PeopleList";
 import "./Page.css";
+import Title from "../layout/Title";
 
-const Home = () => {
-  const { data } = useQuery(GET_PEOPLE);
+const HomeScreen = () => {
+  const { data } = useQuery(GET_PERSON);
   return (
-    <div className="App">
-      <Header header="People & Cars" />
-      <div className="Page">
+    <div>
+    <Title title={"**PEOPLE AND THEIR CAR**"} />
+      <Title title={"ADD PERSON"} />
         <AddPerson />
+        <Title title={"ADD CAR"} />
         {data && data.people.length > 0 && <AddCar />}
         {data && data.people.length > 0 && <PeopleList />}
-      </div>
-      <Footer />
     </div>
   );
 };
 
-export default Home;
+export default HomeScreen;

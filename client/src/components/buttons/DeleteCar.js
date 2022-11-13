@@ -1,10 +1,10 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { useMutation } from "@apollo/client";
-import { DELETE_CAR, PERSON_CARS } from "../../queries";
+import { DELETE_CAR, PERSON_CAR } from "../../queries";
 
 const DeleteCar = ({ id, personId }) => {
   const [deleteCar] = useMutation(DELETE_CAR, {
-    refetchQueries: [{ query: PERSON_CARS, variables: { personId: personId } }],
+    refetchQueries: [{ query: PERSON_CAR, variables: { personId: personId } }],
   });
 
   const handleDelete = () => {

@@ -23,7 +23,7 @@ const typeDefs = gql`
     findPersonById(id: String!): People
     cars: [Cars]
     findCarById(id: String!): Cars
-    personCars(personId: String!): [Cars]
+    carsByPersonId(personId: String!): [Cars]
   }
 
   type Mutation {
@@ -63,7 +63,7 @@ const resolvers = {
     findCarById(parent, args, context, info) {
       return find(cars_data, { id: args.id });
     },
-    personCars(parent, args, context, info) {
+    carsByPersonId(parent, args, context, info) {
       return filter(cars_data, { personId: args.personId });
     },
   },

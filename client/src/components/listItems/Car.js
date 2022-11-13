@@ -1,15 +1,12 @@
 import { EditOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import { useState } from "react";
+
 import DeleteCar from "../buttons/DeleteCar";
 import UpdateCar from "../form/UpdateCar";
 
-const gridStyle = {
-  width: "50%",
-  textAlign: "center",
-};
 
-const CarCard = (props) => {
+const Car = (props) => {
   const { id, year, make, model, price, personId } = props;
   const title = `${make} ${model} Details`;
 
@@ -49,7 +46,9 @@ const CarCard = (props) => {
             <EditOutlined
               style={{
                 fontSize: "20px",
-                color: "#BEA8E1",
+                color: "blue",
+                flexDirection:'row',
+                listStyle:'none'
               }}
               key="edit"
               onClick={handleButtonClick}
@@ -57,15 +56,17 @@ const CarCard = (props) => {
             <DeleteCar id={props.id} personId={props.personId} />,
           ]}
         >
-          <Card.Grid style={gridStyle}>Year: {year}</Card.Grid>
-          <Card.Grid style={gridStyle}>Make: {make}</Card.Grid>
-          <Card.Grid style={gridStyle}>Model: {model}</Card.Grid>
-          <Card.Grid style={gridStyle}>Price: {formatPrice(price)}</Card.Grid>
-          <Card.Grid style={gridStyle}>Person ID: {personId}</Card.Grid>
+          <Card.Grid>Year: {year}</Card.Grid>
+          <Card.Grid >Make: {make}</Card.Grid>
+          <Card.Grid >Model: {model}</Card.Grid>
+          <Card.Grid>Price: {formatPrice(price)}</Card.Grid>
+          <Card.Grid >Person ID: {personId}</Card.Grid>
         </Card>
       )}
     </>
   );
 };
 
-export default CarCard;
+export default Car;
+
+

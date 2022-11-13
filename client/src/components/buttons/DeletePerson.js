@@ -3,19 +3,19 @@ import { useMutation } from "@apollo/client";
 
 import {
   DELETE_CARS_BY_PERSON,
-  DELETE_PERSON,
+  REMOVE_PERSON,
   GET_CARS,
-  GET_PEOPLE,
+  GET_PERSON,
 } from "../../queries";
 
 import filter from "lodash/filter";
 
 const DeletePerson = ({ id }) => {
-  const [deletePerson] = useMutation(DELETE_PERSON, {
+  const [deletePerson] = useMutation(REMOVE_PERSON, {
     update(cache, { data: { deletePerson } }) {
-      const { people } = cache.readQuery({ query: GET_PEOPLE });
+      const { people } = cache.readQuery({ query: GET_PERSON });
       cache.writeQuery({
-        query: GET_PEOPLE,
+        query: GET_PERSON,
         data: {
           people: filter(people, (person) => person.id !== id),
         },

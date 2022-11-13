@@ -2,8 +2,8 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
-import Details from "./components/screens/Details";
-import Home from "./components/screens/Home";
+import DetailScreen from "./components/screens/DetailScreen";
+import HomeScreen from "./components/screens/HomeScreen";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -13,11 +13,11 @@ const client = new ApolloClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <HomeScreen />,
   },
   {
     path: "/details/:id",
-    element: <Details />,
+    element: <DetailScreen />,
   },
 ]);
 
@@ -25,8 +25,8 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <RouterProvider router={router}>
-        <Home />
-        <Details />
+        <HomeScreen />
+        <DetailScreen />
       </RouterProvider>
     </ApolloProvider>
   );
